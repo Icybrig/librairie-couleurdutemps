@@ -1,52 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Brise d'Argile | Book Detail</title>
+    <title>Une Histoire Inventée LAO MA | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="detail-header">
+    <header class="top-bar">
       <div class="wrapper">
-        <p class="eyebrow">Atelier &amp; récit</p>
-        <h1>La Brise d'Argile</h1>
-        <p class="subhead">Récit sensible d'une céramiste qui redonne vie à son atelier.</p>
+        <a href="./index.html" class="site-name">Couleur du Temps</a>
+        <div class="top-actions">
+          <span>Compte</span>
+          <span class="cart">🛒 0,00 EUR</span>
+        </div>
       </div>
     </header>
-
-    <main class="wrapper">
-      <section class="detail-grid">
-        <div class="book-cover cover-brise" aria-hidden="true">
-          <span class="cover-label">La Brise d'Argile</span>
-        </div>
-        <div class="detail-card">
-          <h2>À propos du livre</h2>
-          <p>
-            Entre gestes d'atelier et souvenirs familiaux, ce récit explore la patience de la
-            création artisanale. Il offre une immersion dans les matières, les textures et les
-            rencontres qui façonnent une vocation.
-          </p>
-          <div class="detail-actions">
-            <a class="button primary" href="./index.html">Retour à la collection</a>
-            <a class="button" href="mailto:bonjour@example.com">Prendre rendez-vous</a>
+    <nav class="site-nav">
+      <div class="wrapper">
+        <a href="./index.html">Culture Jidong</a>
+        <a href="./index.html">Art &amp; Photographie</a>
+        <a href="./index.html">Architecture</a>
+        <a href="./index.html">Essais</a>
+        <a href="./index.html">Carnets illustrés</a>
+        <a href="./index.html">Correspondances</a>
+      </div>
+    </nav>
+    <main class="detail-section">
+      <div class="wrapper">
+        <a href="./index.html" class="back-link">← Retour à la collection</a>
+        <div class="detail-layout">
+          <div class="detail-cover">
+            <img src="./cover-brise.png" alt="Une Histoire Inventée LAO MA" />
+          </div>
+          <div class="detail-info">
+            <h1>Une Histoire Inventée LAO MA</h1>
+            <p class="author">LAO MA</p>
+            <p class="price">45,00 EUR</p>
+            <span class="btn-acheter-lg">Acheter</span>
+            <div class="detail-description">
+              <h2>À propos du livre</h2>
+              <p>J’ignore encore si ces lettres de signalement calomnieuses me ciblant étaient véritablement l’œuvre de ce camarade de classe. Il n’en reste pas moins qu’un jour, alors que nous étions tous deux étudiants à l’université, il m’a demandé de rédiger une lettre de recommandation. Dans celle-ci, adressée à un service de notre université, je devais me constituer témoin en faisant l’éloge de son histoire touchante, pleine de « bravoure et de courage », bien que toute droite sortie de son imagination. J’ai accepté d’être son complice, participant au passage à l’invention de cette histoire destinée à duper l’université, histoire restant à ce jour entre lui et moi.</p>
+            </div>
           </div>
         </div>
-        <div class="detail-card">
-          <h2>Détails</h2>
-          <ul class="note-list">
-            <li>Format broché, 144 pages</li>
-            <li>Illustrations à l'encre brune</li>
-            <li>Édition numérotée et signée</li>
-          </ul>
-        </div>
-      </section>
+      </div>
     </main>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Informations</h3>
+            <ul>
+              <li>Conditions générales</li>
+              <li>Politique de confidentialité</li>
+              <li>Modes de paiement</li>
+              <li>Livraison</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Sur rendez-vous uniquement.<br />bonjour@couleurdutemps.fr</p>
+          </div>
+          <div class="footer-col">
+            <h3>Notre Librairie</h3>
+            <ul>
+              <li>À propos</li>
+              <li>Actualités</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Nous Rendre Visite</h3>
+            <p>24 rue Dauphine<br />75006 Paris, France</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
+      </div>
+    </footer>
   </body>
 </html>

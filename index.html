@@ -1,148 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Couleur du Temps | Books Collection</title>
+    <title>Couleur du Temps | Livres d'Art</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="site-header">
+
+    <!-- TOP BAR -->
+    <header class="top-bar">
       <div class="wrapper">
-        <p class="eyebrow">Maison d'édition personnelle</p>
-        <h1>Objets d'art &amp; papeterie — Books Collection</h1>
-        <p class="subhead">
-          Une sélection de sept ouvrages présentés avec la même élégance qu'une boutique d'artisan.
-          Cliquez sur un livre pour découvrir sa description.
-        </p>
+        <span class="site-name">Couleur du Temps</span>
+        <div class="top-actions">
+          <span>Compte</span>
+          <span class="cart">🛒 0,00 EUR</span>
+        </div>
       </div>
     </header>
 
-    <main class="wrapper">
-      <div class="page-layout">
-        <aside class="filter-panel">
-          <h2>Catégories</h2>
-          <ul>
-            <li>Essais &amp; inspirations</li>
-            <li>Carnets illustrés</li>
-            <li>Récits d'atelier</li>
-            <li>Correspondances</li>
-          </ul>
-          <h2>Formats</h2>
-          <ul>
-            <li>Reliés</li>
-            <li>Brochés</li>
-            <li>Carnets textiles</li>
-          </ul>
-          <div class="panel-note">
-            <p>Collection présentée sans vente en ligne. Sur rendez-vous uniquement.</p>
+    <!-- NAV -->
+    <nav class="site-nav">
+      <div class="wrapper">
+        <a href="#">Page d'Accueil</a>
+        <a href="#">Art &amp; Photographie</a>
+        <a href="#">Architecture</a>
+        <a href="#">Essais</a>
+        <a href="#">Carnets illustrés</a>
+        <a href="#">Correspondances</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrapper">
+        <h1>Découvrez notre sélection de livres d'art</h1>
+      </div>
+    </section>
+
+    <!-- BOOK GRID -->
+    <main class="collection-section">
+      <div class="wrapper">
+        <h2>Book Collection</h2>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <a href="./book-aube.html">
+              <div class="cover">
+                <img src="./cover-aube.png" alt="Clés de la Culture Jidong" />
+              </div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">Clés de la Culture Jidong</p>
+              <p class="card-author">Auteur à définir</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
           </div>
-        </aside>
-        <section class="collection">
-          <div class="collection-header">
-            <span>7 ouvrages</span> 
-            <span>Disponibles pour consultation</span>
+
+          <div class="product-card">
+            <a href="./book-brise.html">
+              <div class="cover">
+                <img src="./cover-brise.png" alt="Une Histoire Inventée LAO MA" />
+              </div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">Une Histoire Inventée LAO MA</p>
+              <p class="card-author">LAO MA</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
           </div>
-          <div class="card-grid">
-          <article class="book-card">
-            <a class="card-link" href="./book-aube.html">
-              <div class="book-cover cover-aube">
-                <span class="cover-label">Clés de la Culture Jidong</span>
-              </div>
-              <div class="card-body">
-                <h2>Clés de la Culture Jidong</h2>
-                <p>Essai poétique sur la créativité et les rituels du quotidien.</p>
-                <span class="cta">Voir la description</span>
+
+          <div class="product-card">
+            <a href="./book-constellations.html">
+              <div class="cover">
+                <img src="./cover-constellation.png" alt="La dialogue entre les pensées chinoise et arabe" />
               </div>
             </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-brise.html">
-              <div class="book-cover cover-brise">
-                <span class="cover-label">La Brise d'Argile</span>
-              </div>
-              <div class="card-body">
-                <h2>La Brise d'Argile</h2>
-                <p>Récit sensible d'une céramiste qui redonne vie à son atelier.</p>
-                <span class="cta">Voir la description</span>
-              </div>
-            </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-constellations.html">
-              <div class="book-cover cover-constellations">
-                <span class="cover-label">Constellations Intérieures</span>
-              </div>
-              <div class="card-body">
-                <h2>Constellations Intérieures</h2>
-                <p>Carnet guidé pour cartographier vos souvenirs et vos rêves.</p>
-                <span class="cta">Voir la description</span>
+            <div class="card-info">
+              <p class="card-title">La dialogue entre les pensées chinoise et arabe</p>
+              <p class="card-author">Minyan WU</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-escale.html">
+              <div class="cover">
+                <img src="./cover-escale.png" alt="Études sur le soft power de la Chine dans le développement des relations sino-arabes" />
               </div>
             </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-escale.html">
-              <div class="book-cover cover-escale">
-                <span class="cover-label">Escale Indigo</span>
-              </div>
-              <div class="card-body">
-                <h2>Escale Indigo</h2>
-                <p>Chroniques d'un voyage immobile à travers des villes bleutées.</p>
-                <span class="cta">Voir la description</span>
+            <div class="card-info">
+              <p class="card-title">Études sur le soft power de la Chine dans le développement des relations sino-arabes</p>
+              <p class="card-author">Xin LU</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-jardin.html">
+              <div class="cover" style="background:linear-gradient(135deg,#c6d7a4,#6a7b3d);"></div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">Clés de la pensée chinoise L'État de droit</p>
+              <p class="card-author">Auteur à définir</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-vela.html">
+              <div class="cover">
+                <img src="./cover-secret.png" alt="La Danse Dans La Culture Traditionelle Chinoise" />
               </div>
             </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-jardin.html">
-              <div class="book-cover cover-jardin">
-                <span class="cover-label">Le Jardin des Encres</span>
-              </div>
-              <div class="card-body">
-                <h2>Le Jardin des Encres</h2>
-                <p>Recueil de lettres illustrées par des encres botaniques.</p>
-                <span class="cta">Voir la description</span>
-              </div>
-            </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-vela.html">
-              <div class="book-cover cover-vela">
-                <span class="cover-label">Vela, carnet des marées</span>
-              </div>
-              <div class="card-body">
-                <h2>Vela, carnet des marées</h2>
-                <p>Journal illustré sur la mer, la mémoire et les objets retrouvés.</p>
-                <span class="cta">Voir la description</span>
+            <div class="card-info">
+              <p class="card-title">La Danse Dans La Culture Traditionelle Chinoise</p>
+              <p class="card-author">Yuan HE</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-secret.html">
+              <div class="cover">
+                <img src="./cover-vela.png" alt="L'île" />
               </div>
             </a>
-          </article>
-          <article class="book-card">
-            <a class="card-link" href="./book-secret.html">
-              <div class="book-cover cover-secret">
-                <span class="cover-label">Le Secret des Ateliers</span>
-              </div>
-              <div class="card-body">
-                <h2>Le Secret des Ateliers</h2>
-                <p>Récits courts sur les espaces créatifs et les gestes quotidiens.</p>
-                <span class="cta">Voir la description</span>
-              </div>
-            </a>
-          </article>
+            <div class="card-info">
+              <p class="card-title">L'île</p>
+              <p class="card-author">Lin Sen</p>
+              <p class="card-price">45,00 EUR</p>
+            </div>
+            <span class="btn-acheter">Acheter</span>
+          </div>
+
         </div>
-      </section>
       </div>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="wrapper">
-        <p>Disponible sur rendez-vous — toutes les œuvres sont présentées sans achat en ligne.</p>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Informations</h3>
+            <ul>
+              <li>Conditions générales</li>
+              <li>Politique de confidentialité</li>
+              <li>Modes de paiement</li>
+              <li>Livraison</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Sur rendez-vous uniquement.<br />bonjour@couleurdutemps.fr</p>
+          </div>
+          <div class="footer-col">
+            <h3>Notre Librairie</h3>
+            <ul>
+              <li>À propos</li>
+              <li>Actualités</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Nous Rendre Visite</h3>
+            <p>24 rue Dauphine<br />75006 Paris, France</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
       </div>
     </footer>
+
   </body>
 </html>

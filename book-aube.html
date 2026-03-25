@@ -1,53 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clés de la Culture Jidong | Book Detail</title>
+    <title>Clés de la Culture Jidong | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="detail-header">
+    <header class="top-bar">
       <div class="wrapper">
-        <p class="eyebrow">Collection 2024</p>
-        <h1>Clés de la Culture Jidong</h1>
-        <p class="subhead">Essai poétique sur la créativité et les rituels du quotidien.</p>
+        <a href="./index.html" class="site-name">Couleur du Temps</a>
+        <div class="top-actions">
+          <span>Compte</span>
+          <span class="cart">🛒 0,00 EUR</span>
+        </div>
       </div>
     </header>
-
-    <main class="wrapper">
-      <section class="detail-grid">
-        <div class="book-cover cover-aube" aria-hidden="true">
-          <span class="cover-label">Clés de la Culture Jidong</span>
-        </div>
-        <div class="detail-card">
-          <h2>À propos du livre</h2>
-          <p>
-            Cet ouvrage présente de manière détaillée et rigoureuse les différentes caractéristiques culturelles 
-            de la région de Jidong. Pour ce qui est de l’originalité, l’ouvrage sort des sentiers battus, 
-            emploie une nouvelle méthode. Accompagné de nombreuses photos et rédigé dans une langue belle et vivante, 
-            ce livre est un ouvrage rare et important qui permet aux lecteurs d’avoir une compréhension globale de la culture Jidong.
-          </p>
-          <div class="detail-actions">
-            <a class="button primary" href="./index.html">Retour à la collection</a>
-            <a class="button" href="mailto:bonjour@example.com">Contacter l'autrice</a>
+    <nav class="site-nav">
+      <div class="wrapper">
+        <a href="./index.html">Culture Jidong</a>
+        <a href="./index.html">Art &amp; Photographie</a>
+        <a href="./index.html">Architecture</a>
+        <a href="./index.html">Essais</a>
+        <a href="./index.html">Carnets illustrés</a>
+        <a href="./index.html">Correspondances</a>
+      </div>
+    </nav>
+    <main class="detail-section">
+      <div class="wrapper">
+        <a href="./index.html" class="back-link">← Retour à la collection</a>
+        <div class="detail-layout">
+          <div class="detail-cover">
+            <img src="./cover-aube.png" alt="Clés de la Culture Jidong" style="object-position: center 30%;" />
+          </div>
+          <div class="detail-info">
+            <h1>Clés de la Culture Jidong</h1>
+            <p class="author">Auteur à définir</p>
+            <p class="price">45,00 EUR</p>
+            <span class="btn-acheter-lg">Acheter</span>
+            <div class="detail-description">
+              <h2>À propos du livre</h2>
+              <p>Cet ouvrage présente de manière détaillée et rigoureuse les différentes caractéristiques culturelles de la région de Jidong. Pour ce qui est de l'originalité, l'ouvrage sort des sentiers battus, emploie une nouvelle méthode. Accompagné de nombreuses photos et rédigé dans une langue belle et vivante, ce livre est un ouvrage rare et important qui permet aux lecteurs d'avoir une compréhension globale de la culture Jidong.</p>
+            </div>
           </div>
         </div>
-        <div class="detail-card">
-          <h2>Détails</h2>
-          <ul class="note-list">
-            <li>Format relié, 168 pages</li>
-            <li>Encres végétales et papier ivoire</li>
-            <li>Disponible en présentation privée</li>
-          </ul>
-        </div>
-      </section>
+      </div>
     </main>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Informations</h3>
+            <ul>
+              <li>Conditions générales</li>
+              <li>Politique de confidentialité</li>
+              <li>Modes de paiement</li>
+              <li>Livraison</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Sur rendez-vous uniquement.<br />bonjour@couleurdutemps.fr</p>
+          </div>
+          <div class="footer-col">
+            <h3>Notre Librairie</h3>
+            <ul>
+              <li>À propos</li>
+              <li>Actualités</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Nous Rendre Visite</h3>
+            <p>24 rue Dauphine<br />75006 Paris, France</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
+      </div>
+    </footer>
   </body>
 </html>
