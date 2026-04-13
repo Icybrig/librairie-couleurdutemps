@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commander | Couleur du Temps</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script src="./cart.js"></script>
+    <style>
+      /* ── Stepper ── */
+      .checkout-stepper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 2rem 0 2.5rem;
+        border-bottom: 1px solid var(--gray-mid);
+        margin-bottom: 2.5rem;
+        overflow-x: auto;
+      }
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        min-width: 90px;
+        position: relative;
+      }
+      .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 16px;
+        left: calc(50% + 18px);
+        width: calc(100% - 36px);
+        height: 1px;
+        background: var(--gray-mid);
+      }
+      .step.done:not(:last-child)::after { background: var(--ink); }
+      .step-circle {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        border: 1px solid var(--gray-mid);
+        background: var(--white);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--gray-dark);
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        position: relative;
+        z-index: 1;
+      }
+      .step.active .step-circle {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--white);
+      }
+      .step.done .step-circle {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--white);
+      }
+      .step-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--gray-dark);
+        white-space: nowrap;
+      }
+      .step.active .step-label { color: var(--ink); font-weight: 600; }
+      .step.done .step-label { color: var(--ink); }
+
+      /* ── Checkout layout ── */
+      .checkout-section { padding: 2rem 0 4rem; }
+      .checkout-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 3rem;
+        align-items: start;
+      }
+      @media (max-width: 860px) {
+        .checkout-layout { grid-template-columns: 1fr; }
+        .checkout-summary { order: -1; }
+      }
+
+      /* ── Panel ── */
+      .checkout-panel h2 {
+        font-family: var(--font-serif);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--gray-mid);
+      }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+      .form-group label {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--gray-dark);
+      }
+      .form-group input, .form-group select {
+        border: 1px solid var(--gray-mid);
+        padding: 0.65rem 0.85rem;
+        font-family: var(--font-sans);
+        font-size: 0.9rem;
+        color: var(--ink);
+        background: var(--white);
+        width: 100%;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus, .form-group select:focus {
+        border-color: var(--ink);
+      }
+      .form-group input::placeholder { color: var(--gray-mid); }
+
+      /* card icon decorative */
+      .card-icons { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+      .card-icon {
+        border: 1px solid var(--gray-mid);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        color: var(--gray-dark);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+
+      /* ── Summary sidebar ── */
+      .checkout-summary {
+        border: 1px solid var(--gray-mid);
+        padding: 1.5rem;
+      }
+      .checkout-summary h3 {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--gray-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--gray-light);
+      }
+      .summary-item-title {
+        font-family: var(--font-serif);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.3;
+        flex: 1;
+      }
+      .summary-item-price { font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
+      .summary-line {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.88rem;
+        color: var(--gray-dark);
+        margin-bottom: 0.5rem;
+      }
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--gray-mid);
+        margin-top: 0.5rem;
+      }
+
+      /* ── Buttons ── */
+      .btn-next {
+        display: inline-block;
+        background: var(--ink);
+        color: var(--white);
+        padding: 0.85rem 2.5rem;
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        border: none;
+        font-family: var(--font-sans);
+        transition: background 0.2s;
+        margin-top: 0.5rem;
+      }
+      .btn-next:hover { background: #333; }
+      .btn-back {
+        display: inline-block;
+        background: transparent;
+        color: var(--gray-dark);
+        padding: 0.85rem 1.5rem;
+        font-size: 0.88rem;
+        cursor: pointer;
+        border: none;
+        font-family: var(--font-sans);
+        text-decoration: underline;
+        margin-top: 0.5rem;
+      }
+      .btn-back:hover { color: var(--ink); }
+      .btn-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+      /* ── Panier step ── */
+      .cart-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--gray-light);
+      }
+      .cart-book-title { font-family: var(--font-serif); font-weight: 600; }
+      .cart-book-sub { font-size: 0.85rem; color: var(--gray-dark); margin-top: 0.2rem; }
+      .qty-ctrl { display: flex; align-items: center; gap: 0.75rem; }
+      .qty-btn {
+        width: 28px; height: 28px;
+        border: 1px solid var(--gray-mid);
+        background: var(--white);
+        cursor: pointer;
+        font-size: 1rem;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .qty-val { min-width: 20px; text-align: center; font-weight: 600; }
+
+      /* ── Maintenance screen ── */
+      .maintenance-box {
+        text-align: center;
+        padding: 3rem 2rem;
+        border: 1px solid var(--gray-mid);
+        max-width: 540px;
+        margin: 0 auto;
+      }
+      .maintenance-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--gray-dark);
+      }
+      .maintenance-box h2 {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .maintenance-box p {
+        color: var(--gray-dark);
+        line-height: 1.8;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+      }
+      .maintenance-box .ref {
+        font-size: 0.8rem;
+        color: var(--gray-mid);
+        margin-top: 1.5rem;
+      }
+      .btn-retour-home {
+        display: inline-block;
+        background: var(--ink);
+        color: var(--white);
+        padding: 0.75rem 2rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 1.5rem;
+        cursor: pointer;
+        border: none;
+        font-family: var(--font-sans);
+        transition: background 0.2s;
+      }
+      .btn-retour-home:hover { background: #333; }
+
+      /* hidden utility */
+      .hidden { display: none !important; }
+    </style>
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <div class="wrapper">
+        <a href="./index.html" class="site-name">Couleur du Temps</a>
+        <div class="top-actions">
+          <span>Compte</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
+        </div>
+      </div>
+    </header>
+    <nav class="site-nav">
+      <div class="wrapper">
+        <a href="./index.html">Culture Jidong</a>
+        <a href="./index.html">Art &amp; Photographie</a>
+        <a href="./index.html">Architecture</a>
+        <a href="./index.html">Essais</a>
+        <a href="./index.html">Carnets illustrés</a>
+        <a href="./index.html">Correspondances</a>
+      </div>
+    </nav>
+
+    <main class="checkout-section">
+      <div class="wrapper">
+
+        <!-- STEPPER -->
+        <div class="checkout-stepper" id="stepper">
+          <div class="step active" data-step="1">
+            <div class="step-circle">1</div>
+            <span class="step-label">Panier</span>
+          </div>
+          <div class="step" data-step="2">
+            <div class="step-circle">2</div>
+            <span class="step-label">Coordonnées</span>
+          </div>
+          <div class="step" data-step="3">
+            <div class="step-circle">3</div>
+            <span class="step-label">Livraison</span>
+          </div>
+          <div class="step" data-step="4">
+            <div class="step-circle">4</div>
+            <span class="step-label">Paiement</span>
+          </div>
+        </div>
+
+        <!-- ── STEP 1 : PANIER ── -->
+        <div id="step-1" class="checkout-layout">
+          <div class="checkout-panel">
+            <h2>Votre panier</h2>
+            <div id="cart-items-container"></div>
+            <div class="btn-row" style="margin-top:1.5rem">
+              <a href="javascript:history.back()" class="btn-back">← Continuer mes achats</a>
+              <button class="btn-next" onclick="goTo(2)">Valider le panier</button>
+            </div>
+          </div>
+          <aside class="checkout-summary">
+            <h3>Récapitulatif</h3>
+            <div id="summary-items-1"></div>
+            <div class="summary-line"><span>Sous-total</span><span id="sum-sub-1">—</span></div>
+            <div class="summary-line"><span>Livraison</span><span>Calculée à l'étape suivante</span></div>
+            <div class="summary-total"><span>Total estimé</span><span id="sum-total-1">—</span></div>
+          </aside>
+        </div>
+
+        <!-- ── STEP 2 : COORDONNÉES ── -->
+        <div id="step-2" class="checkout-layout hidden">
+          <div class="checkout-panel">
+            <h2>Vos coordonnées</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" placeholder="Marie" />
+              </div>
+              <div class="form-group">
+                <label>Nom</label>
+                <input type="text" placeholder="Dupont" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Adresse e-mail</label>
+              <input type="email" placeholder="marie.dupont@exemple.fr" />
+            </div>
+            <div class="form-group">
+              <label>Numéro de téléphone</label>
+              <input type="tel" placeholder="+33 6 00 00 00 00" />
+            </div>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goTo(1)">← Retour</button>
+              <button class="btn-next" onclick="goTo(3)">Continuer vers la livraison</button>
+            </div>
+          </div>
+          <aside class="checkout-summary">
+            <h3>Récapitulatif</h3>
+            <div id="summary-items-2"></div>
+            <div class="summary-line"><span>Sous-total</span><span id="sum-sub-2">—</span></div>
+            <div class="summary-line"><span>Livraison</span><span>Calculée à l'étape suivante</span></div>
+            <div class="summary-total"><span>Total estimé</span><span id="sum-total-2">—</span></div>
+          </aside>
+        </div>
+
+        <!-- ── STEP 3 : LIVRAISON ── -->
+        <div id="step-3" class="checkout-layout hidden">
+          <div class="checkout-panel">
+            <h2>Adresse de livraison</h2>
+            <div class="form-group">
+              <label>Adresse</label>
+              <input type="text" placeholder="12 rue de la Paix" />
+            </div>
+            <div class="form-group">
+              <label>Complément d'adresse (facultatif)</label>
+              <input type="text" placeholder="Appartement, bâtiment…" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Code postal</label>
+                <input type="text" placeholder="75001" />
+              </div>
+              <div class="form-group">
+                <label>Ville</label>
+                <input type="text" placeholder="Paris" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Pays</label>
+              <select>
+                <option value="FR" selected>France</option>
+                <option value="BE">Belgique</option>
+                <option value="CH">Suisse</option>
+                <option value="CA">Canada</option>
+                <option value="LU">Luxembourg</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mode de livraison</label>
+              <select>
+                <option value="std">Livraison standard — 4 à 6 jours ouvrés (5,90 EUR)</option>
+                <option value="exp">Livraison express — 1 à 2 jours ouvrés (9,90 EUR)</option>
+                <option value="rel">Point relais — 3 à 5 jours ouvrés (3,90 EUR)</option>
+              </select>
+            </div>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goTo(2)">← Retour</button>
+              <button class="btn-next" onclick="goTo(4)">Continuer vers le paiement</button>
+            </div>
+          </div>
+          <aside class="checkout-summary">
+            <h3>Récapitulatif</h3>
+            <div id="summary-items-3"></div>
+            <div class="summary-line"><span>Sous-total</span><span id="sum-sub-3">—</span></div>
+            <div class="summary-line"><span>Livraison</span><span>5,90 EUR</span></div>
+            <div class="summary-total"><span>Total</span><span id="sum-total-3">—</span></div>
+          </aside>
+        </div>
+
+        <!-- ── STEP 4 : PAIEMENT ── -->
+        <div id="step-4" class="checkout-layout hidden">
+          <div class="checkout-panel">
+            <h2>Paiement sécurisé</h2>
+            <div class="card-icons">
+              <span class="card-icon">VISA</span>
+              <span class="card-icon">MC</span>
+              <span class="card-icon">AMEX</span>
+            </div>
+            <div class="form-group">
+              <label>Numéro de carte</label>
+              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+            <div class="form-group">
+              <label>Nom sur la carte</label>
+              <input type="text" placeholder="MARIE DUPONT" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date d'expiration</label>
+                <input type="text" placeholder="MM / AA" maxlength="7" />
+              </div>
+              <div class="form-group">
+                <label>Code de sécurité (CVV)</label>
+                <input type="text" placeholder="123" maxlength="4" />
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goTo(3)">← Retour</button>
+              <button class="btn-next" onclick="placeOrder()">Confirmer la commande</button>
+            </div>
+          </div>
+          <aside class="checkout-summary">
+            <h3>Récapitulatif</h3>
+            <div id="summary-items-4"></div>
+            <div class="summary-line"><span>Sous-total</span><span id="sum-sub-4">—</span></div>
+            <div class="summary-line"><span>Livraison</span><span>5,90 EUR</span></div>
+            <div class="summary-total"><span>Total</span><span id="sum-total-4">—</span></div>
+          </aside>
+        </div>
+
+        <!-- ── MAINTENANCE ── -->
+        <div id="step-maintenance" class="hidden" style="padding: 2rem 0;">
+          <div class="maintenance-box">
+            <div class="maintenance-icon">⚙</div>
+            <h2>Service momentanément indisponible</h2>
+            <p>Notre service de commande en ligne est actuellement en cours de maintenance.</p>
+            <p>Nous faisons tout notre possible pour rétablir le service dans les meilleurs délais. Nous vous remercions de votre compréhension.</p>
+            <p>Pour toute question ou pour passer commande, n'hésitez pas à nous contacter directement à l'adresse&nbsp;: <strong>bonjour@couleurdutemps.fr</strong></p>
+            <p class="ref">Référence erreur : MAINT-503 — <span id="err-date"></span></p>
+            <a href="./index.html"><button class="btn-retour-home">Retour à la boutique</button></a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Informations</h3>
+            <ul>
+              <li>Conditions générales</li>
+              <li>Politique de confidentialité</li>
+              <li>Modes de paiement</li>
+              <li>Livraison</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Sur rendez-vous uniquement.<br />bonjour@couleurdutemps.fr</p>
+          </div>
+          <div class="footer-col">
+            <h3>Notre Librairie</h3>
+            <ul>
+              <li>À propos</li>
+              <li>Actualités</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Nous Rendre Visite</h3>
+            <p>24 rue Dauphine<br />75006 Paris, France</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
+      </div>
+    </footer>
+
+    <script>
+      // ── Cart data ──
+      const params = new URLSearchParams(window.location.search);
+      const fromCart = params.get('fromCart') === '1';
+
+      let items = [];
+      if (fromCart) {
+        items = (getCart() || []).map(i => ({ titre: i.titre, prix: i.prix, qty: i.qty }));
+      } else {
+        const titre = params.get('titre') || 'Livre';
+        const prix = parseFloat(params.get('prix')) || 0;
+        items = [{ titre, prix, qty: 1 }];
+      }
+
+      const LIVRAISON = 5.90;
+
+      function fmt(val) {
+        return val.toFixed(2).replace('.', ',') + ' EUR';
+      }
+
+      function getSubtotal() {
+        return items.reduce((s, i) => s + i.prix * i.qty, 0);
+      }
+
+      function changeQty(idx, delta) {
+        items[idx].qty = Math.max(1, items[idx].qty + delta);
+        renderCartItems();
+        updateAllSummaries();
+      }
+
+      function renderCartItems() {
+        const container = document.getElementById('cart-items-container');
+        if (!items.length) {
+          container.innerHTML = '<p style="color:var(--gray-dark);padding:1rem 0">Votre panier est vide.</p>';
+          return;
+        }
+        container.innerHTML = items.map((item, i) => `
+          <div class="cart-row">
+            <div style="flex:1;min-width:0">
+              <p class="cart-book-title">${item.titre}</p>
+              <p class="cart-book-sub">Édition française</p>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+            </div>
+            <p style="font-weight:600;white-space:nowrap;margin-left:1rem">${fmt(item.prix * item.qty)}</p>
+          </div>
+        `).join('');
+      }
+
+      function renderSummaryItems(n) {
+        const container = document.getElementById('summary-items-' + n);
+        if (!container) return;
+        container.innerHTML = items.map(item => `
+          <div class="summary-item">
+            <p class="summary-item-title">${item.titre}</p>
+            <p class="summary-item-price">${fmt(item.prix * item.qty)}</p>
+          </div>
+        `).join('');
+      }
+
+      function updateAllSummaries() {
+        const sub = getSubtotal();
+        const withLiv = sub + LIVRAISON;
+        [1, 2, 3, 4].forEach(n => {
+          renderSummaryItems(n);
+          const subEl = document.getElementById('sum-sub-' + n);
+          const totalEl = document.getElementById('sum-total-' + n);
+          if (subEl) subEl.textContent = fmt(sub);
+          if (totalEl) totalEl.textContent = (n <= 2) ? fmt(sub) : fmt(withLiv);
+        });
+      }
+
+      // ── Stepper ──
+      let currentStep = 1;
+
+      function goTo(step) {
+        document.getElementById('step-' + currentStep).classList.add('hidden');
+        currentStep = step;
+        document.getElementById('step-' + currentStep).classList.remove('hidden');
+        updateStepperUI();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function updateStepperUI() {
+        document.querySelectorAll('.step').forEach(el => {
+          const s = parseInt(el.dataset.step);
+          el.classList.remove('active', 'done');
+          if (s === currentStep) el.classList.add('active');
+          if (s < currentStep) el.classList.add('done');
+        });
+      }
+
+      function placeOrder() {
+        document.getElementById('stepper').classList.add('hidden');
+        document.getElementById('step-4').classList.add('hidden');
+        document.getElementById('step-maintenance').classList.remove('hidden');
+        const now = new Date();
+        document.getElementById('err-date').textContent =
+          now.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+          ' à ' + now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Init
+      renderCartItems();
+      updateAllSummaries();
+    </script>
+
+  </body>
+</html>

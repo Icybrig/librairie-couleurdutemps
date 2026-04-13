@@ -17,7 +17,7 @@
         <span class="site-name">Couleur du Temps</span>
         <div class="top-actions">
           <span>Compte</span>
-          <span class="cart">🛒 0,00 EUR</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
         </div>
       </div>
     </header>
@@ -25,7 +25,7 @@
     <!-- NAV -->
     <nav class="site-nav">
       <div class="wrapper">
-        <a href="#">Culture Jidong</a>
+        <a href="#">Page d'Accueil</a>
         <a href="#">Art &amp; Photographie</a>
         <a href="#">Architecture</a>
         <a href="#">Essais</a>
@@ -44,57 +44,45 @@
     <!-- BOOK GRID -->
     <main class="collection-section">
       <div class="wrapper">
-        <h2>Book Collection</h2>
+        <h2>Collection</h2>
         <div class="product-grid">
 
           <div class="product-card">
             <a href="./book-aube.html">
               <div class="cover">
-                <img src="./cover-aube.png" alt="L'Aube des Idées" />
+                <img src="./cover-aube.png" alt="Clés de la Culture Jidong" />
               </div>
             </a>
             <div class="card-info">
-              <p class="card-title">L'Aube des Idées</p>
+              <p class="card-title">Clés de la Culture Jidong</p>
               <p class="card-author">Auteur à définir</p>
-              <p class="card-price">45,00 EUR</p>
+              <p class="card-price">29,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="Clés de la Culture Jidong" data-prix="29">Ajouter au panier</button>
           </div>
 
           <div class="product-card">
-            <a href="./book-brise.html">
-              <div class="cover" style="background:linear-gradient(135deg,#9bc9c0,#3d6d66);"></div>
+            <a href="./book-baichuan.html">
+              <div class="cover" style="background:linear-gradient(135deg,#a8c4d4,#2c5f7a);"></div>
             </a>
             <div class="card-info">
-              <p class="card-title">La Brise d'Argile</p>
+              <p class="card-title">Tous les fleuves mènent à la mer</p>
               <p class="card-author">Auteur à définir</p>
-              <p class="card-price">45,00 EUR</p>
+              <p class="card-price">23,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="Tous les fleuves mènent à la mer" data-prix="23">Ajouter au panier</button>
           </div>
 
           <div class="product-card">
-            <a href="./book-constellations.html">
-              <div class="cover" style="background:linear-gradient(135deg,#b7b7e1,#54547a);"></div>
+            <a href="./book-zhishang.html">
+              <div class="cover" style="background:linear-gradient(135deg,#e8d5b0,#8b6914);"></div>
             </a>
             <div class="card-info">
-              <p class="card-title">Constellations Intérieures</p>
+              <p class="card-title">Écrits sur la culture</p>
               <p class="card-author">Auteur à définir</p>
-              <p class="card-price">45,00 EUR</p>
+              <p class="card-price">19,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
-          </div>
-
-          <div class="product-card">
-            <a href="./book-escale.html">
-              <div class="cover" style="background:linear-gradient(135deg,#a0b8e0,#37558f);"></div>
-            </a>
-            <div class="card-info">
-              <p class="card-title">Escale Indigo</p>
-              <p class="card-author">Auteur à définir</p>
-              <p class="card-price">45,00 EUR</p>
-            </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="Écrits sur la culture" data-prix="19">Ajouter au panier</button>
           </div>
 
           <div class="product-card">
@@ -102,35 +90,81 @@
               <div class="cover" style="background:linear-gradient(135deg,#c6d7a4,#6a7b3d);"></div>
             </a>
             <div class="card-info">
-              <p class="card-title">Le Jardin des Encres</p>
+              <p class="card-title">Clés de la pensée chinoise L'État de droit</p>
               <p class="card-author">Auteur à définir</p>
               <p class="card-price">45,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="Clés de la pensée chinoise L'État de droit" data-prix="45">Ajouter au panier</button>
           </div>
 
           <div class="product-card">
             <a href="./book-vela.html">
-              <div class="cover" style="background:linear-gradient(135deg,#f0d3c2,#91514d);"></div>
+              <div class="cover">
+                <img src="./cover-secret.png" alt="La Danse Dans La Culture Traditionelle Chinoise" />
+              </div>
             </a>
             <div class="card-info">
-              <p class="card-title">Vela, carnet des marées</p>
-              <p class="card-author">Auteur à définir</p>
-              <p class="card-price">45,00 EUR</p>
+              <p class="card-title">La Danse Dans La Culture Traditionelle Chinoise</p>
+              <p class="card-author">Yuan HE</p>
+              <p class="card-price">29,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="La Danse Dans La Culture Traditionelle Chinoise" data-prix="29">Ajouter au panier</button>
           </div>
 
           <div class="product-card">
             <a href="./book-secret.html">
-              <div class="cover" style="background:linear-gradient(135deg,#f0c5d6,#8c4a6a);"></div>
+              <div class="cover">
+                <img src="./cover-vela.png" alt="L'île" />
+              </div>
             </a>
             <div class="card-info">
-              <p class="card-title">Le Secret des Ateliers</p>
-              <p class="card-author">Auteur à définir</p>
+              <p class="card-title">L'île</p>
+              <p class="card-author">Lin Sen</p>
               <p class="card-price">45,00 EUR</p>
             </div>
-            <span class="btn-acheter">Acheter</span>
+            <button class="btn-acheter" data-add-to-cart data-titre="L'île" data-prix="45">Ajouter au panier</button>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-brise.html">
+              <div class="cover">
+                <img src="./cover-brise.png" alt="Une Histoire Inventée LAO MA" />
+              </div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">Une Histoire Inventée LAO MA</p>
+              <p class="card-author">LAO MA</p>
+              <p class="card-price">9,00 EUR</p>
+            </div>
+            <button class="btn-acheter" data-add-to-cart data-titre="Une Histoire Inventée LAO MA" data-prix="9">Ajouter au panier</button>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-constellations.html">
+              <div class="cover">
+                <img src="./cover-constellation.png" alt="La dialogue entre les pensées chinoise et arabe" />
+              </div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">La dialogue entre les pensées chinoise et arabe</p>
+              <p class="card-author">Minyan WU</p>
+              <p class="card-price">19,00 EUR</p>
+            </div>
+            <button class="btn-acheter" data-add-to-cart data-titre="La dialogue entre les pensées chinoise et arabe" data-prix="19">Ajouter au panier</button>
+          </div>
+
+          <div class="product-card">
+            <a href="./book-escale.html">
+              <div class="cover">
+                <img src="./cover-escale.png" alt="Études sur le soft power de la Chine dans le développement des relations sino-arabes" />
+              </div>
+            </a>
+            <div class="card-info">
+              <p class="card-title">Études sur le soft power de la Chine dans le développement des relations sino-arabes</p>
+              <p class="card-author">Xin LU</p>
+              <p class="card-price">20,00 EUR</p>
+            </div>
+            <button class="btn-acheter" data-add-to-cart data-titre="Études sur le soft power de la Chine dans le développement des relations sino-arabes" data-prix="20">Ajouter au panier</button>
           </div>
 
         </div>
@@ -171,5 +205,6 @@
       </div>
     </footer>
 
+  <script src="./cart.js"></script>
   </body>
 </html>

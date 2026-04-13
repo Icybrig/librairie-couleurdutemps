@@ -172,7 +172,7 @@ img { display: block; width: 100%; object-fit: cover; }
   letter-spacing: 0.08em;
   margin: 0.9rem;
   margin-top: 0;
-  cursor: default;
+  cursor: pointer;
   transition: background 0.2s;
 }
 .product-card .btn-acheter:hover { background: #333; }
@@ -214,6 +214,11 @@ img { display: block; width: 100%; object-fit: cover; }
   font-size: 1.5rem;
   font-weight: 600;
 }
+.detail-info .dimensions {
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  margin-top: 0.25rem;
+}
 .btn-acheter-lg {
   display: inline-block;
   background: var(--ink);
@@ -222,10 +227,27 @@ img { display: block; width: 100%; object-fit: cover; }
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  cursor: default;
+  cursor: pointer;
   transition: background 0.2s;
 }
 .btn-acheter-lg:hover { background: #333; }
+.btn-panier-lg {
+  display: inline-block;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 0.85rem 2.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-panier-lg:hover { background: var(--ink); color: var(--white); }
+.detail-btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.cart-link { font-size: 0.85rem; color: var(--gray-dark); text-decoration: underline; cursor: pointer; }
+.cart-link:hover { color: var(--ink); }
 .detail-description {
   border-top: 1px solid var(--gray-mid);
   padding-top: 1.2rem;

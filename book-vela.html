@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vela, carnet des marées | Couleur du Temps</title>
+    <title>La Danse Dans La Culture Traditionelle Chinoise | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
         <a href="./index.html" class="site-name">Couleur du Temps</a>
         <div class="top-actions">
           <span>Compte</span>
-          <span class="cart">🛒 0,00 EUR</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
         </div>
       </div>
     </header>
@@ -33,15 +33,27 @@
       <div class="wrapper">
         <a href="./index.html" class="back-link">← Retour à la collection</a>
         <div class="detail-layout">
-          <div class="detail-cover placeholder" style="background:linear-gradient(135deg,#f0d3c2,#91514d);"></div>
+          <div class="detail-cover">
+            <img src="./cover-secret.png" alt="La Danse Dans La Culture Traditionelle Chinoise" />
+          </div>
           <div class="detail-info">
-            <h1>Vela, carnet des marées</h1>
-            <p class="author">Auteur à définir</p>
-            <p class="price">45,00 EUR</p>
-            <span class="btn-acheter-lg">Acheter</span>
+            <h1>La Danse Dans La Culture Traditionelle Chinoise</h1>
+            <p class="author">Yuan HE</p>
+            <p class="price">29,00 EUR</p>
+            <p class="dimensions">Format : à définir</p>
+            <div class="detail-btn-row">
+              <button class="btn-panier-lg" data-add-to-cart data-titre="La Danse Dans La Culture Traditionelle Chinoise" data-prix="29">Ajouter au panier</button>
+              <a class="btn-acheter-lg" href="./checkout.html?titre=La+Danse+Dans+La+Culture+Traditionelle+Chinoise&prix=29">Acheter</a>
+            </div>
             <div class="detail-description">
               <h2>À propos du livre</h2>
-              <p>Journal illustré sur la mer, la mémoire et les objets retrouvés.</p>
+              <p>La danse est une culture. L’objectif de ce livre est de
+fournir une plate-forme permettant aux lecteurs de
+voir la culture à travers la danse et les scènes de danse
+à travers la culture. Nous souhaitons de cette manière
+développer de nouvelles connaissances et une meilleure
+compréhension de la danse en tant que phénomène
+culturel immatériel et discipline artistique silencieuse.</p>
             </div>
           </div>
         </div>
@@ -79,5 +91,6 @@
         <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
       </div>
     </footer>
+  <script src="./cart.js"></script>
   </body>
 </html>

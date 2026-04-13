@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>L'Aube des Idées | Couleur du Temps</title>
+    <title>Clés de la Culture Jidong | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
         <a href="./index.html" class="site-name">Couleur du Temps</a>
         <div class="top-actions">
           <span>Compte</span>
-          <span class="cart">🛒 0,00 EUR</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
         </div>
       </div>
     </header>
@@ -34,13 +34,17 @@
         <a href="./index.html" class="back-link">← Retour à la collection</a>
         <div class="detail-layout">
           <div class="detail-cover">
-            <img src="./cover-aube.png" alt="L'Aube des Idées" style="object-position: center 30%;" />
+            <img src="./cover-aube.png" alt="Clés de la Culture Jidong" style="object-position: center 30%;" />
           </div>
           <div class="detail-info">
-            <h1>L'Aube des Idées</h1>
+            <h1>Clés de la Culture Jidong</h1>
             <p class="author">Auteur à définir</p>
-            <p class="price">45,00 EUR</p>
-            <span class="btn-acheter-lg">Acheter</span>
+            <p class="price">29,00 EUR</p>
+            <p class="dimensions">Format : à définir</p>
+            <div class="detail-btn-row">
+              <button class="btn-panier-lg" data-add-to-cart data-titre="Clés de la Culture Jidong" data-prix="29">Ajouter au panier</button>
+              <a class="btn-acheter-lg" href="./checkout.html?titre=Cl%C3%A9s+de+la+Culture+Jidong&prix=29">Acheter</a>
+            </div>
             <div class="detail-description">
               <h2>À propos du livre</h2>
               <p>Cet ouvrage présente de manière détaillée et rigoureuse les différentes caractéristiques culturelles de la région de Jidong. Pour ce qui est de l'originalité, l'ouvrage sort des sentiers battus, emploie une nouvelle méthode. Accompagné de nombreuses photos et rédigé dans une langue belle et vivante, ce livre est un ouvrage rare et important qui permet aux lecteurs d'avoir une compréhension globale de la culture Jidong.</p>
@@ -81,5 +85,6 @@
         <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
       </div>
     </footer>
+  <script src="./cart.js"></script>
   </body>
 </html>

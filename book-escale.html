@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Escale Indigo | Couleur du Temps</title>
+    <title>Études sur le soft power de la Chine dans le développement des relations sino-arabes | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
         <a href="./index.html" class="site-name">Couleur du Temps</a>
         <div class="top-actions">
           <span>Compte</span>
-          <span class="cart">🛒 0,00 EUR</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
         </div>
       </div>
     </header>
@@ -33,15 +33,41 @@
       <div class="wrapper">
         <a href="./index.html" class="back-link">← Retour à la collection</a>
         <div class="detail-layout">
-          <div class="detail-cover placeholder" style="background:linear-gradient(135deg,#a0b8e0,#37558f);"></div>
+          <div class="detail-cover">
+            <img src="./cover-escale.png" alt="Études sur le soft power de la Chine dans le développement des relations sino-arabes" />
+          </div>
           <div class="detail-info">
-            <h1>Escale Indigo</h1>
-            <p class="author">Auteur à définir</p>
-            <p class="price">45,00 EUR</p>
-            <span class="btn-acheter-lg">Acheter</span>
+            <h1>Études sur le soft power de la Chine dans le développement des relations sino-arabes</h1>
+            <p class="author">Xin LU</p>
+            <p class="price">20,00 EUR</p>
+            <p class="dimensions">Format : à définir</p>
+            <div class="detail-btn-row">
+              <button class="btn-panier-lg" data-add-to-cart data-titre="Études sur le soft power de la Chine dans le développement des relations sino-arabes" data-prix="20">Ajouter au panier</button>
+              <a class="btn-acheter-lg" href="./checkout.html?titre=%C3%89tudes+sur+le+soft+power+de+la+Chine&prix=20">Acheter</a>
+            </div>
             <div class="detail-description">
               <h2>À propos du livre</h2>
-              <p>Chroniques d'un voyage immobile à travers des villes bleutées.</p>
+              <p>Le présent ouvrage est divisé en cinq chapitres. Le premier
+chapitre se concentre sur le choix et l’adoption de la voie du
+« développement pacifique » de la Chine pour discuter des
+principaux défis externes auxquels la Chine est confrontée sur
+la voie de son développement pacifique et de l’importance
+des pays arabes pour la Chine dans ses efforts de surmonter
+ces défis et de bien réaliser son développement pacifique. Le
+deuxième chapitre s’intéresse aux deux aspects, à savoir les
+exigences inhérentes de la stratégie de développement pacifique
+de la Chine et la dynamique concurrentielle du soft power entre
+les principales puissances dans les pays arabes, qui permettront
+d’examiner l’inévitabilité de l’utilisation du soft power par
+la Chine pour défendre ses intérêts dans le monde arabe. Les
+chapitres 3 et 4 correspondent au corps de l’ouvrage : les
+atouts et les lacunes du soft power dans ses aspects positifs et
+négatifs, ce qui permettra d’analyser la situation actuelle du soft
+power chinois dans les pays arabes de manière plus complète
+et plus objective. Enfin, le chapitre 5 propose des réflexions et
+des suggestions pour améliorer et perfectionner le soft power
+chinois à l’avenir, sur la base de l’analyse de la situation
+actuelle du soft power chinois dans les pays arabes.</p>
             </div>
           </div>
         </div>
@@ -79,5 +105,6 @@
         <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
       </div>
     </footer>
+  <script src="./cart.js"></script>
   </body>
 </html>

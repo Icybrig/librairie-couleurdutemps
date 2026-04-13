@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Panier | Couleur du Temps</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script src="./cart.js"></script>
+    <style>
+      .cart-page-section { padding: 2.5rem 0 4rem; }
+      .cart-page-layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 3rem;
+        align-items: start;
+      }
+      @media (max-width: 800px) {
+        .cart-page-layout { grid-template-columns: 1fr; }
+        .cart-sidebar { order: -1; }
+      }
+      .cart-page-panel h2 {
+        font-family: var(--font-serif);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--gray-mid);
+      }
+      /* row */
+      .cart-item-row {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--gray-light);
+      }
+      .cart-item-info { flex: 1; min-width: 0; }
+      .cart-item-title {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.3;
+      }
+      .cart-item-sub { font-size: 0.82rem; color: var(--gray-dark); margin-top: 0.2rem; }
+      .cart-item-unit { font-size: 0.82rem; color: var(--gray-dark); margin-top: 0.1rem; }
+      .qty-ctrl { display: flex; align-items: center; gap: 0.6rem; }
+      .qty-btn {
+        width: 28px; height: 28px;
+        border: 1px solid var(--gray-mid);
+        background: var(--white);
+        cursor: pointer;
+        font-size: 1rem;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.15s;
+      }
+      .qty-btn:hover { background: var(--gray-light); }
+      .qty-val { min-width: 20px; text-align: center; font-weight: 600; font-size: 0.9rem; }
+      .cart-item-price { font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
+      .btn-remove {
+        background: none; border: none; cursor: pointer;
+        color: var(--gray-dark); font-size: 1.1rem; padding: 0.2rem;
+        line-height: 1; transition: color 0.15s;
+      }
+      .btn-remove:hover { color: var(--ink); }
+      /* empty */
+      .cart-empty {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--gray-dark);
+      }
+      .cart-empty p { margin-bottom: 1.5rem; font-size: 1rem; }
+      /* sidebar */
+      .cart-sidebar {
+        border: 1px solid var(--gray-mid);
+        padding: 1.5rem;
+      }
+      .cart-sidebar h3 {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--gray-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .sidebar-line {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.88rem;
+        color: var(--gray-dark);
+        margin-bottom: 0.5rem;
+      }
+      .sidebar-total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--gray-mid);
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .btn-commander {
+        display: block;
+        width: 100%;
+        background: var(--ink);
+        color: var(--white);
+        text-align: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        border: none;
+        font-family: var(--font-sans);
+        transition: background 0.2s;
+      }
+      .btn-commander:hover { background: #333; }
+      .btn-commander:disabled {
+        background: var(--gray-mid);
+        cursor: not-allowed;
+      }
+      .link-continuer {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: var(--gray-dark);
+        text-decoration: underline;
+      }
+      .link-continuer:hover { color: var(--ink); }
+    </style>
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <div class="wrapper">
+        <a href="./index.html" class="site-name">Couleur du Temps</a>
+        <div class="top-actions">
+          <span>Compte</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
+        </div>
+      </div>
+    </header>
+    <nav class="site-nav">
+      <div class="wrapper">
+        <a href="./index.html">Culture Jidong</a>
+        <a href="./index.html">Art &amp; Photographie</a>
+        <a href="./index.html">Architecture</a>
+        <a href="./index.html">Essais</a>
+        <a href="./index.html">Carnets illustrés</a>
+        <a href="./index.html">Correspondances</a>
+      </div>
+    </nav>
+
+    <main class="cart-page-section">
+      <div class="wrapper">
+        <a href="./index.html" class="back-link">← Continuer mes achats</a>
+
+        <div id="cart-with-items" class="cart-page-layout" style="display:none">
+          <div class="cart-page-panel">
+            <h2>Mon panier</h2>
+            <div id="cart-lines"></div>
+          </div>
+          <aside class="cart-sidebar">
+            <h3>Récapitulatif</h3>
+            <div class="sidebar-line"><span>Sous-total</span><span id="cart-subtotal">—</span></div>
+            <div class="sidebar-line"><span>Livraison</span><span>Calculée à l'étape suivante</span></div>
+            <div class="sidebar-total"><span>Total estimé</span><span id="cart-total">—</span></div>
+            <button class="btn-commander" onclick="commander()">Commander</button>
+            <a href="./index.html" class="link-continuer">Continuer mes achats</a>
+          </aside>
+        </div>
+
+        <div id="cart-empty" class="cart-empty" style="display:none">
+          <p>Votre panier est vide.</p>
+          <a href="./index.html"><button class="btn-commander" style="width:auto;padding:0.85rem 2.5rem">Découvrir notre collection</button></a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>Informations</h3>
+            <ul>
+              <li>Conditions générales</li>
+              <li>Politique de confidentialité</li>
+              <li>Modes de paiement</li>
+              <li>Livraison</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Sur rendez-vous uniquement.<br />bonjour@couleurdutemps.fr</p>
+          </div>
+          <div class="footer-col">
+            <h3>Notre Librairie</h3>
+            <ul>
+              <li>À propos</li>
+              <li>Actualités</li>
+              <li>FAQ</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Nous Rendre Visite</h3>
+            <p>24 rue Dauphine<br />75006 Paris, France</p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
+      </div>
+    </footer>
+
+    <script>
+      function fmt(val) {
+        return val.toFixed(2).replace('.', ',') + ' EUR';
+      }
+
+      function renderCart() {
+        const cart = getCart();
+        const withItems = document.getElementById('cart-with-items');
+        const empty = document.getElementById('cart-empty');
+
+        if (!cart.length) {
+          withItems.style.display = 'none';
+          empty.style.display = 'block';
+          return;
+        }
+
+        withItems.style.display = 'grid';
+        empty.style.display = 'none';
+
+        const lines = document.getElementById('cart-lines');
+        lines.innerHTML = cart.map((item, i) => `
+          <div class="cart-item-row">
+            <div class="cart-item-info">
+              <p class="cart-item-title">${item.titre}</p>
+              <p class="cart-item-sub">Édition française</p>
+              <p class="cart-item-unit">${fmt(item.prix)} / unité</p>
+            </div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+            </div>
+            <p class="cart-item-price">${fmt(item.prix * item.qty)}</p>
+            <button class="btn-remove" onclick="removeItem(${i})" title="Supprimer">✕</button>
+          </div>
+        `).join('');
+
+        const subtotal = cart.reduce((s, i) => s + i.prix * i.qty, 0);
+        document.getElementById('cart-subtotal').textContent = fmt(subtotal);
+        document.getElementById('cart-total').textContent = fmt(subtotal);
+      }
+
+      function changeQty(index, delta) {
+        updateCartQty(index, delta);
+        renderCart();
+      }
+
+      function removeItem(index) {
+        removeFromCart(index);
+        renderCart();
+      }
+
+      function commander() {
+        window.location.href = './checkout.html?fromCart=1';
+      }
+
+      renderCart();
+    </script>
+
+  </body>
+</html>

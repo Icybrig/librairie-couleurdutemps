@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Constellations Intérieures | Couleur du Temps</title>
+    <title>La dialogue entre les pensées chinoise et arabe | Couleur du Temps</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
         <a href="./index.html" class="site-name">Couleur du Temps</a>
         <div class="top-actions">
           <span>Compte</span>
-          <span class="cart">🛒 0,00 EUR</span>
+          <a href="./cart.html" id="cart-badge" class="cart">🛒 Panier</a>
         </div>
       </div>
     </header>
@@ -33,15 +33,32 @@
       <div class="wrapper">
         <a href="./index.html" class="back-link">← Retour à la collection</a>
         <div class="detail-layout">
-          <div class="detail-cover placeholder" style="background:linear-gradient(135deg,#b7b7e1,#54547a);"></div>
+          <div class="detail-cover">
+            <img src="./cover-constellation.png" alt="La dialogue entre les pensées chinoise et arabe" />
+          </div>
           <div class="detail-info">
-            <h1>Constellations Intérieures</h1>
-            <p class="author">Auteur à définir</p>
-            <p class="price">45,00 EUR</p>
-            <span class="btn-acheter-lg">Acheter</span>
+            <h1>La dialogue entre les pensées chinoise et arabe</h1>
+            <p class="author">Minyan WU</p>
+            <p class="price">19,00 EUR</p>
+            <p class="dimensions">Format : à définir</p>
+            <div class="detail-btn-row">
+              <button class="btn-panier-lg" data-add-to-cart data-titre="La dialogue entre les pensées chinoise et arabe" data-prix="19">Ajouter au panier</button>
+              <a class="btn-acheter-lg" href="./checkout.html?titre=La+dialogue+entre+les+pens%C3%A9es+chinoise+et+arabe&prix=19">Acheter</a>
+            </div>
             <div class="detail-description">
               <h2>À propos du livre</h2>
-              <p>Carnet guidé pour cartographier vos souvenirs et vos rêves.</p>
+              <p>« L’esprit du juste milieu n’étant pas né du néant, nous
+n’avons donc pas besoin, pour faire face à cette question (le
+traitement de la culture traditionnelle), du juste milieu, mais le
+dépassement, la capacité et la sagesse de la création culturelle.»
+Un processus marqué par l’analyse et la critique, l’héritage
+et le développement, la transformation et la rénovation,
+ainsi que le dépassement et l’innovation, est nécessaire pour
+apprécier correctement les pensées traditionnelles du juste
+milieu confucianiste et du concordisme arabo-islamique avant
+de pouvoir découvrir, grâce à une vison et une méthodologie
+toutes deux modernes, leur esprit positif afin de le reconnaître et
+valoriser.</p>
             </div>
           </div>
         </div>
@@ -79,5 +96,6 @@
         <div class="footer-bottom">© 2026 Couleur du Temps — Tous droits réservés</div>
       </div>
     </footer>
+  <script src="./cart.js"></script>
   </body>
 </html>
